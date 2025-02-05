@@ -10,7 +10,7 @@ export type EventData = {
 };
 
 export type OmnisendContextType = {
-  trackEvent: (eventName: EventName, eventData?: any) => void;
+  trackEvent: (eventName: EventName, eventData?: EventData) => void;
 };
 
 export type OmnisendProviderProps = {
