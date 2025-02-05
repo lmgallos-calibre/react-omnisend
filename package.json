@@ -1,6 +1,6 @@
 {
   "name": "react-omnisend",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple react wrapper for Omnisend",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -22,5 +22,9 @@
     "Omnisend"
   ],
   "author": "Nika Sepiskveradze",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikasepiskveradze/react-omnisend"
+  }
 }
