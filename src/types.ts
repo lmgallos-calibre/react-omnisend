@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { addedProductToCart, startedCheckout, viewedProduct } from './omnisend';
 
 export type EventName =
   | 'added product to cart'
@@ -127,9 +126,9 @@ export type EventOptions = {
 
 export type OmnisendContextType = {
   trackEvent: (eventName: EventName, eventData?: EventData) => void;
-  addedProductToCart: (eventData: EventData, options: EventOptions) => void;
-  startedCheckout: (eventData: EventData, options: EventOptions) => void;
-  viewedProduct: (eventData: EventData, options: EventOptions) => void;
+  addedProductToCart: (eventData: EventData, options?: EventOptions) => void;
+  startedCheckout: (eventData: EventData, options?: EventOptions) => void;
+  viewedProduct: (eventData: EventData, options?: EventOptions) => void;
 };
 
 export type OmnisendProviderProps = {

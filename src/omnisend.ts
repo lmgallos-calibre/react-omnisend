@@ -25,24 +25,24 @@ export const trackEvent = (eventName: EventName, eventData: EventData) => {
 
 export const addedProductToCart = (
   eventData: EventData,
-  options: EventOptions,
+  options?: EventOptions,
 ) => {
-  if (options.skip) return;
+  if (options?.skip) return;
 
   trackEvent('added product to cart', eventData);
 };
 
 export const startedCheckout = (
   eventData: EventData,
-  options: EventOptions,
+  options?: EventOptions,
 ) => {
-  if (options.skip) return;
+  if (options?.skip) return;
 
   trackEvent('started checkout', eventData);
 };
 
-export const viewedProduct = (eventData: EventData, options: EventOptions) => {
-  if (options.skip) return;
+export const viewedProduct = (eventData: EventData, options?: EventOptions) => {
+  if (options?.skip) return;
 
   trackEvent('viewed product', eventData);
 };
