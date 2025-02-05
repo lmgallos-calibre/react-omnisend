@@ -1,6 +1,6 @@
 {
   "name": "react-omnisend",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Simple react wrapper for Omnisend",
   "main": "dist/index.js",
   "module": "dist/index.js",
