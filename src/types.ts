@@ -1,7 +1,16 @@
 import { ReactNode } from 'react';
 
+export type EventName =
+  | 'added product to cart'
+  | 'started checkout'
+  | 'viewed product';
+
+export type EventData = {
+  [key: string]: any;
+};
+
 export type OmnisendContextType = {
-  trackEvent: (eventName: string, eventData?: any) => void;
+  trackEvent: (eventName: EventName, eventData?: any) => void;
 };
 
 export type OmnisendProviderProps = {
@@ -9,11 +18,7 @@ export type OmnisendProviderProps = {
   brandID: string;
 };
 
-export type EventData = {
-  [key: string]: any;
-};
-
-export type OmnisendEvent = {
-  track: (eventName: string, eventData?: EventData) => void;
+export type Omnisend = {
+  track: (eventName: EventName, eventData?: EventData) => void;
   push: (args: any[]) => void;
 };

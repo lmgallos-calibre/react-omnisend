@@ -1,3 +1,3 @@
 interface Window {
-  omnisend: OmnisendEvent[];
+  omnisend: Omnisend[];
 }

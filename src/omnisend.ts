@@ -1,4 +1,4 @@
-import { EventData } from './types';
+import { EventData, EventName } from './types';
 
 export const initializeOmnisend = (brandID: string): void => {
   if (typeof window !== 'undefined') {
@@ -15,10 +15,7 @@ export const initializeOmnisend = (brandID: string): void => {
   }
 };
 
-export const trackEvent = (
-  eventName: string,
-  eventData: EventData = {},
-): void => {
+export const trackEvent = (eventName: EventName, eventData: EventData = {}) => {
   if (window.omnisend) {
     window.omnisend.push(['track', eventName, eventData]);
   } else {
