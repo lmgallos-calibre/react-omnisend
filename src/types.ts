@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { addedProductToCart, startedCheckout, viewedProduct } from './omnisend';
 
 export type EventName =
   | 'added product to cart'
@@ -10,22 +11,22 @@ export type EventData = {
   eventID?: string;
   eventVersion: 'v5' | 'v2' | '';
   eventTime?: string;
-  properties: OmnisendEventProperties;
+  properties: EventProperties;
 };
 
-export type OmnisendEventProperties = {
+export type EventProperties = {
   abandonedCheckoutURL?: string;
   cartID?: string;
   currency?: string;
   value?: number;
-  lineItems?: OmnisendLineItem[];
-  page?: OmnisendPage;
-  product?: OmnisendProduct;
-  userInfo?: OmnisendUserInfo;
-  utm?: OmnisendUTM;
+  lineItems?: LineItem[];
+  page?: Page;
+  product?: Product;
+  userInfo?: UserInfo;
+  utm?: UTM;
 };
 
-export type OmnisendLineItem = {
+export type LineItem = {
   productID: string;
   productTitle: string;
   productDescription?: string;
@@ -44,12 +45,12 @@ export type OmnisendLineItem = {
   }[];
 };
 
-export type OmnisendPage = {
+export type Page = {
   title: string;
   url: string;
 };
 
-export type OmnisendProduct = {
+export type Product = {
   id?: string;
   title?: string;
   price?: string;
@@ -64,7 +65,7 @@ export type OmnisendProduct = {
   }[];
 };
 
-export type OmnisendUserInfo = {
+export type UserInfo = {
   city?: string;
   country?: string;
   device?: string;
@@ -73,13 +74,13 @@ export type OmnisendUserInfo = {
   sessionId?: string;
 };
 
-export type OmnisendUTM = {
+export type UTM = {
   campaign?: string;
   medium?: string;
   source?: string;
 };
 
-export type OmnisendContact = {
+export type Contact = {
   id?: string;
   email?: string;
   phone?: string;
@@ -94,25 +95,25 @@ export type OmnisendContact = {
   country?: string;
   customProperties?: Record<string, any>;
   tags?: string[];
-  optIns?: OmnisendOptIn[];
-  optOuts?: OmnisendOptOut[];
-  consents?: OmnisendConsent[];
+  optIns?: OptIn[];
+  optOuts?: OptOut[];
+  consents?: Consent[];
 };
 
-export type OmnisendOptIn = {
+export type OptIn = {
   channel: string;
   createdAt: string;
   source?: string;
 };
 
-export type OmnisendOptOut = {
+export type OptOut = {
   channel: string;
   createdAt: string;
   reason?: string;
   source?: string;
 };
 
-export type OmnisendConsent = {
+export type Consent = {
   channel: string;
   createdAt: string;
   ip?: string;
@@ -120,8 +121,15 @@ export type OmnisendConsent = {
   userAgent?: string;
 };
 
+export type EventOptions = {
+  skip?: boolean;
+};
+
 export type OmnisendContextType = {
   trackEvent: (eventName: EventName, eventData?: EventData) => void;
+  addedProductToCart: (eventData: EventData, options: EventOptions) => void;
+  startedCheckout: (eventData: EventData, options: EventOptions) => void;
+  viewedProduct: (eventData: EventData, options: EventOptions) => void;
 };
 
 export type OmnisendProviderProps = {

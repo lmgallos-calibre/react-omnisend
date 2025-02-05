@@ -1,6 +1,6 @@
-import { EventData, EventName } from './types';
+import { EventData, EventName, EventOptions } from './types';
 
-export const initializeOmnisend = (brandID: string): void => {
+export const initialize = (brandID: string): void => {
   if (typeof window !== 'undefined') {
     window.omnisend = window.omnisend || [];
     window.omnisend.push(['brandID', brandID]);
@@ -21,4 +21,28 @@ export const trackEvent = (eventName: EventName, eventData: EventData) => {
   } else {
     console.warn('Omnisend script not loaded yet.');
   }
+};
+
+export const addedProductToCart = (
+  eventData: EventData,
+  options: EventOptions,
+) => {
+  if (options.skip) return;
+
+  trackEvent('added product to cart', eventData);
+};
+
+export const startedCheckout = (
+  eventData: EventData,
+  options: EventOptions,
+) => {
+  if (options.skip) return;
+
+  trackEvent('started checkout', eventData);
+};
+
+export const viewedProduct = (eventData: EventData, options: EventOptions) => {
+  if (options.skip) return;
+
+  trackEvent('viewed product', eventData);
 };
