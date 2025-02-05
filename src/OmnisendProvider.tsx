@@ -5,8 +5,8 @@ import {
   startedCheckout,
   trackEvent,
   viewedProduct,
-} from './omnisend';
-import { OmnisendContextType, OmnisendProviderProps } from './types';
+} from './omnisend.js';
+import { OmnisendContextType, OmnisendProviderProps } from './types.js';
 
 const OmnisendContext = createContext<OmnisendContextType | null>(null);
 

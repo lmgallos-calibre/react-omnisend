@@ -1,4 +1,4 @@
-import { EventData, EventName, EventOptions } from './types';
+import { EventData, EventName, EventOptions } from './types.js';
 
 export const initialize = (brandID: string): void => {
   if (typeof window !== 'undefined') {
