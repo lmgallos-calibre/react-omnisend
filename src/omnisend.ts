@@ -15,7 +15,7 @@ export const initializeOmnisend = (brandID: string): void => {
   }
 };
 
-export const trackEvent = (eventName: EventName, eventData: EventData = {}) => {
+export const trackEvent = (eventName: EventName, eventData: EventData) => {
   if (window.omnisend) {
     window.omnisend.push(['track', eventName, eventData]);
   } else {
