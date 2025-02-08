@@ -1,11 +1,5 @@
 import React, { createContext, useContext, useEffect } from 'react';
-import {
-  addedProductToCart,
-  initialize,
-  startedCheckout,
-  trackEvent,
-  viewedProduct,
-} from './omnisend.js';
+import { initialize, trackEvent } from './omnisend.js';
 import { OmnisendContextType, OmnisendProviderProps } from './types.js';
 
 const OmnisendContext = createContext<OmnisendContextType | null>(null);
@@ -24,9 +18,7 @@ const OmnisendProvider = ({ children, brandID }: OmnisendProviderProps) => {
   }, [brandID]);
 
   return (
-    <OmnisendContext.Provider
-      value={{ trackEvent, addedProductToCart, startedCheckout, viewedProduct }}
-    >
+    <OmnisendContext.Provider value={{ trackEvent }}>
       {children}
     </OmnisendContext.Provider>
   );
