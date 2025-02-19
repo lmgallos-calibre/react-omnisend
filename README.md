@@ -1,38 +1,106 @@
-# Omnisend React Package
+# React Omnisend
 
-A React context wrapper for Omnisend.
+A lightweight React context wrapper for integrating Omnisend event tracking seamlessly into your React applications.
 
 ## Installation
+
+Install the package using npm:
 
 ```bash
 npm install react-omnisend
 ```
 
+or using yarn:
+
+```bash
+yarn add react-omnisend
+```
+
 ## Usage
 
+### React SPA Example
+
+Wrap your application with `OmnisendProvider` and pass your `brandID`:
+
+```jsx
+import { OmnisendProvider } from 'react-omnisend';
+import App from './App';
+
+const Root = () => (
+  <OmnisendProvider brandID="YOUR_BRAND_ID">
+    <App />
+  </OmnisendProvider>
+);
+
+export default Root;
 ```
-import { OmnisendProvider, useOmnisend } from 'react-omnisend';
 
-<OmnisendProvider brandID="YOUR_BRAND_ID">
-  <App />
-</OmnisendProvider>
+### Next.js (Pages Router) Example
+
+Wrap your `_app.js` with `OmnisendProvider`:
+
+```jsx
+import { OmnisendProvider } from 'react-omnisend';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <OmnisendProvider brandID="YOUR_BRAND_ID">
+      <Component {...pageProps} />
+    </OmnisendProvider>
+  );
+}
+
+export default MyApp;
 ```
 
-## Tracking events
+### Next.js (App Router) Example
 
+In Next.js App Router, wrap your `layout.tsx` or `layout.js`:
+
+```tsx
+import { OmnisendProvider } from 'react-omnisend';
+
+export default function RootLayout({ children }) {
+  return (
+    <OmnisendProvider brandID="YOUR_BRAND_ID">
+      {children}
+    </OmnisendProvider>
+  );
+}
 ```
-const omnisend = useOmnisend();
-omnisend.trackEvent("event_name", { key: "value" });
+
+## Tracking Events
+
+Use the `useOmnisend` hook to track events:
+
+```jsx
+import { useOmnisend } from 'react-omnisend';
+
+const Component = () => {
+  const omnisend = useOmnisend();
+
+  const handleEvent = () => {
+    omnisend.trackEvent("event_name", { key: "value" });
+  };
+
+  return <button onClick={handleEvent}>Track Event</button>;
+};
 ```
 
-## Supported events
+## Supported Events
 
-Now we only support 3 events, from Omnisend, those are:
+Currently, the package supports the following Omnisend events:
 
-```https://api-docs.omnisend.com/reference/added-product-to-cart```
+- **Added Product to Cart** ([API Reference](https://api-docs.omnisend.com/reference/added-product-to-cart))
+- **Started Checkout** ([API Reference](https://api-docs.omnisend.com/reference/started-checkout))
+- **Viewed Product** ([API Reference](https://api-docs.omnisend.com/reference/viewed-product))
 
-```https://api-docs.omnisend.com/reference/started-checkout```
+Ensure that you send event data following Omnisend's API documentation.
 
-```https://api-docs.omnisend.com/reference/viewed-product```
+## Contributing
 
-**Send event data according to those docs**
+Contributions are welcome! Feel free to open issues or submit pull requests to improve this package.
+
+## License
+
+This project is licensed under the MIT License.

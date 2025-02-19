@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useEffect } from 'react';
 import { initialize, trackEvent } from './omnisend.js';
 import { OmnisendContextType, OmnisendProviderProps } from './types.js';
