@@ -94,6 +94,7 @@ Currently, the package supports the following Omnisend events:
 - **Added Product to Cart** ([API Reference](https://api-docs.omnisend.com/reference/added-product-to-cart))
 - **Started Checkout** ([API Reference](https://api-docs.omnisend.com/reference/started-checkout))
 - **Viewed Product** ([API Reference](https://api-docs.omnisend.com/reference/viewed-product))
+- **Placed Order** ([API Reference](https://api-docs.omnisend.com/reference/placed-order))
 
 Ensure that you send event data following Omnisend's API documentation.
 

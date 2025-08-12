@@ -3,7 +3,8 @@ import { ReactNode } from 'react';
 export type EventName =
   | 'added product to cart'
   | 'started checkout'
-  | 'viewed product';
+  | 'viewed product'
+  | 'placed order';
 
 export type EventData = {
   origin: 'api';
@@ -25,6 +26,16 @@ export type EventProperties = {
   product: Partial<Product>;
   userInfo: Partial<UserInfo>;
   utm: Partial<UTM>;
+  orderID: string;
+  totalPrice: number;
+  billingAddress: Partial<Address>;
+  shippingAddress: Partial<Address>;
+  discounts: Partial<Discount>[];
+  fulfillmentStatus: FulfillmentStatus;
+  paymentMethod: string;
+  paymentStatus: PaymentStatus;
+  shippingMethod: string;
+  tracking: Partial<Tracking>;
 };
 
 export type LineItem = {
@@ -121,6 +132,46 @@ export type Consent = {
   ip: string;
   source: string;
   userAgent: string;
+};
+
+export type PaymentStatus =
+  | 'awaitingPayment'
+  | 'partiallyPaid'
+  | 'paid'
+  | 'partiallyRefunded'
+  | 'refunded'
+  | 'voided';
+
+export type FulfillmentStatus =
+  | 'unfulfilled'
+  | 'inProgress'
+  | 'fulfilled'
+  | 'delivered'
+  | 'restocked';
+
+export type Address = {
+  firstName: string;
+  lastName: string;
+  company: string;
+  address1: string;
+  address2: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  phone: string;
+};
+
+export type Discount = {
+  code: string;
+  amount: number;
+  type: 'fixed' | 'percentage';
+};
+
+export type Tracking = {
+  trackingNumber: string;
+  carrier: string;
+  url: string;
 };
 
 export type OmnisendContextType = {
